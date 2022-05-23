@@ -1,0 +1,39 @@
+<div class="toolbar" role="banner">
+  <span>Welcome</span>
+  <div class="spacer"></div>
+
+  <div class="action-buttons-container">
+    <button class="action-button" *ngIf="(afAuth.authState | async) === null" (click)="signIn()">Sign in with Google</button>
+    <button class="action-button" *ngIf="(afAuth.authState | async)" (click)="signOut()">Sign out</button>
+  </div>
+
+</div>
+
+
+<div class="content" role="main">
+  <div *ngIf="afAuth.authState | async as user">
+  Welcome {{user.displayName}} !!!
+  </div>
+
+  <div class="card-container">
+    <a class="card" routerLink="/home">
+      <span>Home</span>
+    </a>
+
+    <a class="card" routerLink="/about">
+      <span>About</span>
+    </a>
+
+    <a class="card" routerLink="/account">
+      <span>Account</span>
+    </a>
+
+
+  </div>
+
+
+
+
+</div>
+
+<router-outlet></router-outlet>

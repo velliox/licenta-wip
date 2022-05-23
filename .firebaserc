@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bidwars-15aa6": {
+      "hosting": {
+        "bid-warz": [
+          "bidwars-15aa6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bidwars-15aa6"
+  }
+}
