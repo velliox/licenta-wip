@@ -1,0 +1,102 @@
+<div class="item-container">
+    <header class="item-header">
+        <mat-card class="item-child card-left">
+            <mat-card-content>
+                <!-- <div>
+                    <h2>Product Details</h2>
+                    <div *ngFor="let mDetails of zaPost" class="product">
+                        <li>{{mDetails.titlu}}</li>
+                        <li>{{mDetails.seller_uid}}</li>
+                        <li>{{mDetails.descriere}}</li>
+                    </div>
+                </div> -->
+                <div>
+                    <h2>Product Details</h2>
+                    <div class="product">
+                        <img class="img-pic" src="{{myPostData?.pic_url}}">
+                        <div class="title-stl">Product Name: {{myPostData?.titlu}}</div>
+                        <div class="seller-stl">Seller: <a routerLink="/account/{{myPostData?.seller_uid}}">{{myPostData?.seller_displayName}} </a></div>
+                        <!-- <li>{{myPostData?.seller_displayName}}</div> -->
+                        <div class="description-max">Description: {{myPostData?.descriere}}</div>
+                        <div *ngIf="isActuallyClosed == true">
+                            Bid winner:  
+                            <a routerLink="/account/{{this.myHighestPostdata[0].user_id}}">
+                            {{this.myHighestPostdata[0].user_name}}
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-disposition" >
+                        <b class="status-stl" *ngIf="myPostData?.isClosed==true" style="color: red">CLOSED</b>
+                        <b class="status-stl" *ngIf="myPostData?.isClosed==false" style="color: rgb(11, 236, 236)">OPEN</b>
+                    </div>
+                    
+                    
+                </div>
+            </mat-card-content>
+          </mat-card>
+      <mat-card class="item-child card-right">
+        <mat-card-content>
+            <!-- <div>
+                <h2>Licitatii</h2>
+                <div *ngFor="let mData of meinData.biddings[0].listed_bids">
+                    <li>{{mData.bidder_name}}, {{mData.bidder_name}}, 
+                        Bid Value:{{mData.bid_value}} $, {{mData.timestamp}}</li>
+                </div>
+                <button class="call-me" (click)="getSpecificItemMessages()">Messages</button>
+                <button class="call-me" (click)="getSpecificItem()">Post</button>
+            </div> -->
+            <!-- <div>
+                <h2>Licitatii</h2>
+                <div *ngFor="let mData of myMsgs">
+                    <li>{{mData.user_name}}: {{mData.value}} </li>
+                </div>
+            </div> -->
+            <h2>Offers</h2>
+            <div class="offer-area offers-max">
+                
+                <div *ngFor="let mData of myMsgs" class="bids">
+                    <div class="offer-value "> <a routerLink="/account/{{mData.user_id}}">{{mData.user_name}} </a>: {{mData.value}} RON</div>
+                </div>
+                <br>
+                <br>
+                <div class="offer-form" *ngIf="canPost == true">
+                    <form *ngIf="this.hasPhoneNB"  [formGroup]="offerForm" (ngSubmit)="submit()" >
+                        <mat-form-field>
+                            <input matInput placeholder="Bid Value" formControlName="value" />
+                            <mat-error *ngIf="value?.errors?.['required']">
+                              Bid Value is required
+                            </mat-error>
+                            <mat-error *ngIf="value?.errors?.['pattern']">
+                                Bid Value has to be a number
+                              </mat-error>
+                          </mat-form-field>
+                        <br>
+                        <button [disabled]="!offerForm.valid"  mat-raised-button color="primary" class="submit-button" type="submit">
+                            Post Offer
+                        </button>
+                        
+                      
+                      </form>
+                </div>
+                <button *ngIf="canClose == true && canPost == true || this.UserPersInfoData?.isAdmin == true" mat-raised-button color="primary" class="submit-button-close" 
+                (click)="closeListing()">
+                    End the product listing
+                </button>
+
+
+                <button *ngIf="this.UserPersInfoData?.isAdmin == true" mat-raised-button color="primary" class="submit-button-delete" 
+                (click)="deleteListing()">
+                    Delete Product Post
+                </button>
+                
+            </div>
+        </mat-card-content>
+      </mat-card>
+      
+    
+    </header>
+    </div>
+      
+      
+    <router-outlet></router-outlet>

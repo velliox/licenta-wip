@@ -1,0 +1,101 @@
+.action-button-a{
+    background-color:rgb(0, 1, 2);
+    color: white;
+    margin: auto;
+    border-radius: 7%;
+    height: 40px;
+}
+.action-button-b{
+    background-color:rgb(218, 10, 55);
+    margin: 4px;
+    border-radius: 7%;
+}
+
+
+.login-container{
+    position: relative;
+    height:80vh;
+    width:100vw;
+    flex-direction: column;
+    display:flex;
+    margin: auto;
+}
+
+.login-child card-right{
+    height: 150px;
+    position: absolute;
+    display:flex;
+}
+
+.login-header{
+    height: 70vh;
+    width:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    
+}
+.login-child-card-right{
+    justify-content: space-between;
+    width: 50%;
+    text-align: center;
+}
+
+.login-child{
+    flex: 1;
+    position:relative;
+}
+
+.login-child:first-child{
+    margin-right: 20px;
+}
+
+.login-child:card-left{
+    display: flex;
+    position:relative;
+    height: 50px;
+    width: 20px;
+}
+
+.login-child:card-right{
+    position:relative;
+    height: 50px;
+    width: 20px;
+}
+
+.card-right{
+    height: 150px;
+    width: 150px;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+
+.login-button{
+    display: flex;
+    margin: 2px;
+    background-color: rgb(0, 0, 14);
+    color: white;
+}
+
+.create-account{
+    display: flex;
+    margin: 2px;
+    background-color: rgb(0, 0, 14);
+    color: white;
+}
+
+.submit-button{
+    background-color: black;
+}
+
+.submit-phone-nb{
+    display: flex;
+    margin: auto;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+.input-stl{
+    border:5px;
+}

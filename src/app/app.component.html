@@ -1,39 +1,126 @@
-<div class="toolbar" role="banner">
-  <span>Welcome</span>
-  <div class="spacer"></div>
 
-  <div class="action-buttons-container">
-    <button class="action-button" *ngIf="(afAuth.authState | async) === null" (click)="signIn()">Sign in with Google</button>
-    <button class="action-button" *ngIf="(afAuth.authState | async)" (click)="signOut()">Sign out</button>
-  </div>
+<!-- <mat-toolbar class="card-container">
 
-</div>
-
-
-<div class="content" role="main">
-  <div *ngIf="afAuth.authState | async as user">
-  Welcome {{user.displayName}} !!!
-  </div>
-
-  <div class="card-container">
+  <div >
     <a class="card" routerLink="/home">
       <span>Home</span>
     </a>
 
-    <a class="card" routerLink="/about">
-      <span>About</span>
+    <a class="card" routerLink="/post-product">
+      <span>List Item</span>
     </a>
 
-    <a class="card" routerLink="/account">
+</div>
+
+<div class="login-place">
+  <ng-container  *ngIf="afAuth.authState | async as user; else loginButton" >
+    <button mat-button [matMenuTriggerFor]="logoutMenu">
+        {{user.displayName}}
+        <mat-icon>menu</mat-icon>
+    </button>
+</ng-container>
+
+<ng-template  #loginButton>
+  <button mat-button  routerLink="login">
+    <mat-icon>login</mat-icon>
+    Login
+  </button>
+</ng-template>
+
+<mat-menu #logoutMenu="matMenu">
+  <button class="apply-hover" mat-menu-item (click)="goToMyAccount()">My Account</button>
+  <button class="apply-hover" mat-menu-item (click)="signOut()">Exit Account</button>
+</mat-menu>
+
+</div>
+
+</mat-toolbar> -->
+
+<mat-toolbar class="navbar-main nmp">
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <div class="left-nav-side">
+    
+    <span style="cursor:pointer" routerLink="/home">Bid Warz</span>
+    <span class="example-spacer " style="margin-right:20px"></span>
+    <button routerLink="/post-product" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>library_add</mat-icon> List an item
+    </button>
+  </div>
+  <div class="right-nav-side">
+    <div class="login-place">
+      <ng-container  *ngIf="afAuth.authState | async as user; else loginButton" >
+        <button mat-button [matMenuTriggerFor]="logoutMenu">
+            {{user.displayName}}
+            <mat-icon>menu</mat-icon>
+        </button>
+    </ng-container>
+    
+    <ng-template  #loginButton>
+      <button mat-button  routerLink="login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+    </ng-template>
+    
+    <mat-menu #logoutMenu="matMenu">
+      <button class="apply-hover" mat-menu-item (click)="goToMyAccount()">My Account</button>
+      <button class="apply-hover" mat-menu-item (click)="signOut()">Exit Account</button>
+    </mat-menu>
+    
+    </div>
+  </div>
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button> -->
+</mat-toolbar>
+<!-- <div class="content" role="main">
+  
+  <div class="card-container">
+    
+    <a class="card" routerLink="/home">
+      <span>Home</span>
+    </a>
+
+    <a class="card" routerLink="/listed-item/nkWe8kzLeka6cUVvypab">
+      <span>Item Page</span>
+    </a>
+
+    <a class="card" routerLink="/account/LnmCMWO6kMdgp0lEoywqikh8Ogy2">
       <span>Account</span>
     </a>
 
+    <a class="card" routerLink="/post-product">
+      <span>List Item</span>
+    </a>
 
-  </div>
+    <ng-container *ngIf="afAuth.authState | async as user; else loginButton" class="login-area">
+        <button mat-button [matMenuTriggerFor]="logoutMenu">
+            {{user.displayName}}
+            <mat-icon>menu</mat-icon>
+        </button>
+    </ng-container>
+
+    <ng-template #loginButton class="login-area">
+      <button mat-button routerLink="login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+    </ng-template>
+
+    <mat-menu #logoutMenu="matMenu" class="login-area">
+      <button mat-menu-item (click)="signOut()">Exit Account</button>
+    </mat-menu>
+
+
+    
 
 
 
 
-</div>
+
+
+</div>  -->
 
 <router-outlet></router-outlet>

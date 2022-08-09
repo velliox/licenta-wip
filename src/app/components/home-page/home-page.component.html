@@ -1,1 +1,46 @@
-<p>home-page works!</p>
+
+<div class="container-biddings">
+
+  <div class="main-content-bidings">
+    <mat-card class="items-hl biding-item-box" *ngFor="let e of myPosts | paginate: { itemsPerPage: count, currentPage: p }" >
+      <mat-card-content routerLink="/listed-item/{{e.ids}}">
+        <img class="img-pic" src="{{e.pic_url}}">
+        <div class="title-bidding">{{e.titlu}}</div>
+        <div>{{e.descriere}}</div>
+        <div class="seller-bidding">Seller: <a class="user-banner" routerLink="/account/{{e.seller_uid}}">{{e.seller_displayName}} </a></div>
+        
+      </mat-card-content>
+    </mat-card>
+    
+  </div>
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+  <!-- <div class="container" >
+    <h4 class="text-info">Displaying employee data.</h4>
+    <div >
+      
+      <div> </div>
+
+        
+          <mat-card class="products-paging-comp">
+            <mat-card class="items-hl" *ngFor="let e of myPosts | paginate: { itemsPerPage: count, currentPage: p }" >
+                <mat-card-content routerLink="/listed-item/{{e.ids}}">
+                    <img class="img-pic" src="{{e.pic_url}}">
+                    <li>{{e.titlu}}</li>
+                    <li>{{e.descriere}}</li>
+                    <li>Seller: <a class="user-banner" routerLink="/account/{{e.seller_uid}}">{{e.seller_displayName}} </a></li>
+                    
+                </mat-card-content>
+            </mat-card>
+          </mat-card>
+
+    </div>
+ 
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div> -->
+
+<router-outlet></router-outlet>

@@ -1,0 +1,83 @@
+<div class="login-container">
+<header class="login-header">
+  <div class="login-child card-left">
+      <div class="spacer"></div>
+      
+      <div class="action-buttons-container">
+        <button class="action-button-a" *ngIf="(afAuth.authState | async) === null" (click)="googleLogin()">Sign in with Google</button>
+        <!-- <button class="action-button-b" *ngIf="(afAuth.authState | async)" (click)="signOut()">Sign out</button> -->
+        <!-- <button class="action-button-c" *ngIf="(afAuth.authState | async) === null" (click)="goLogin()">Sign out</button> -->
+      </div>
+  </div>
+  <mat-card *ngIf="!this.hasPhoneNB" class="submit-phone-nb" >
+  <div class="reg-form">
+    <form [formGroup]="registerForm" (ngSubmit)="submitPN()" *ngIf="!this.hasPhoneNB" >
+
+        <div>
+          <div *ngIf="afAuth.authState | async as user">
+            Welcome {{user.displayName}} !!
+            </div>
+          In order to finalize the registration, please submit your phone number
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Phone Number" formControlName="phoneNumber" />
+          <mat-error *ngIf="phoneNumber?.errors?.['required']">
+            Phone Number is required
+          </mat-error>
+          <mat-error *ngIf="phoneNumber?.errors?.['pattern']">
+            Phone Number is wrong
+          </mat-error>
+        </mat-form-field>
+
+        <button [disabled]="!registerForm.valid" mat-raised-button color="primary" class="submit-button" type="submit">
+            Submit!
+        </button>
+        
+      
+      </form>
+  </div>
+</mat-card>
+  <mat-card class="login-child-card-right" *ngIf="(afAuth.authState | async) === null">
+    <mat-card-content class="card-content-stl">
+        <!-- <form #form="ngForm" class="login-form" (ngSubmit)="login(form)">
+          <input type="text" name="email" ngModel placeholder="Email address" required>
+          <input type="password" name="password" ngModel placeholder="Password" required>
+          
+          <button type="submit" class="login-button" [disabled]="form.invalid || form.pending">Login</button>
+        </form> -->
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+          <mat-form-field class="input-stl">
+            <input matInput placeholder="Email address" formControlName="email" />
+            <mat-error *ngIf="email?.errors?.['required']">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">
+              Please enter a correct email format
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="input-stl">
+            <input matInput placeholder="Password" formControlName="password" type="password" />
+            <mat-error *ngIf="password?.errors?.['required']">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+
+          <br>
+          <button mat-raised-button color="primary" class="submit-button" type="submit">
+              Login
+          </button>
+          
+        
+        </form>
+        <span>No account? <a routerLink="/register">Sign up now!</a></span>
+        
+    </mat-card-content>
+  </mat-card>
+  
+
+</header>
+</div>
+  
+  
+<router-outlet></router-outlet>

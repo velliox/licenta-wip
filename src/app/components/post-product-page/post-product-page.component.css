@@ -1,0 +1,62 @@
+/* .body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+} */
+
+
+.product-post-form{
+    display: block;
+    max-width: 200px;
+    height: 300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.reg-form mat-form-field{
+    width: 100%;
+}
+
+.submit-button{
+    display: flex;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+.item-card{
+    height: 100%;
+    width:30%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    
+}
+
+
+.item-child{
+    flex: 1;
+    position: absolute;
+    -webkit-box-shadow: 6px 4px 19px 0px rgba(122, 9, 122, 0.6);
+-moz-box-shadow: 6px 4px 19px 0px rgba(71,7,71,0.6);
+box-shadow: 6px 4px 19px 0px rgba(71,7,71,0.6);
+}
+
+.item-child:first-child{
+    margin-right: 20px;
+    height: 100%;
+    width: 90%;
+    text-align: center;
+}
+
+.card{
+    display: flex;
+    height: 500px;
+    width: 120px;
+    
+}
+
+.post-product{
+    height: 100%;
+}

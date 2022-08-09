@@ -1,0 +1,54 @@
+<section class="register">
+<mat-card class="item-card">
+  <mat-card-content class="item-child card">
+    <div class="spacer"></div>
+    <div class="reg-form">
+        <h1>Register</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()" >
+            <mat-form-field>
+                <input matInput placeholder="Display Name" formControlName="displayName" />
+                <mat-error *ngIf="email?.errors?.['required']">
+                  Display Name is required
+                </mat-error>
+              </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Email address" formControlName="email" />
+              <mat-error *ngIf="email?.errors?.['required']">
+                Email is required
+              </mat-error>
+              <mat-error *ngIf="email?.errors?.['email']">
+                Please enter a correct email format
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Password" formControlName="password" type="password" />
+              <mat-error *ngIf="password?.errors?.['required']">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Phone Number" formControlName="phoneNumber" />
+              <mat-error *ngIf="phoneNumber?.errors?.['required']">
+                Phone Number is required
+              </mat-error>
+              <mat-error *ngIf="phoneNumber?.errors?.['pattern']">
+                Phone Number is wrong
+              </mat-error>
+            </mat-form-field>
+
+
+            <button [disabled]="!registerForm.valid" mat-raised-button color="primary" class="submit-button" type="submit">
+                Register
+            </button>
+            
+          
+          </form>
+    </div>
+    <div class="spacer"></div>
+  </mat-card-content>
+</mat-card>
+
+
+</section>
+
+<router-outlet></router-outlet>

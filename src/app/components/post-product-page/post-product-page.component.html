@@ -1,0 +1,77 @@
+<section class="post-product">
+  <mat-card class="item-card">
+    <mat-card-content class="item-child card">
+      <div class="spacer"></div>
+    <!-- <div class="body">
+        <form #form="ngForm" (ngSubmit)="pushInfo(form.value)">
+            <div class="title">
+                <input type="text" placeholder="Product Name" name="p_name" ngModel>
+            </div>
+            <div class="description">
+                <input type="text" placeholder="Product Description" name="p_description" ngModel>
+
+            </div>
+            <div class="initial-price">
+                <input type="text" placeholder="Starting price" name="init_price" ngModel>
+            </div>
+
+            <div class="product-picture">
+                <input type="text" placeholder="Product Picture URL" name="init_pic" ngModel>
+            </div>
+            <button type="submit" class="submit-button">Post Product!</button>
+        </form>
+    </div> -->
+
+    <div class="product-post-form">
+        <h3>Fill in the product information</h3>
+        <form [formGroup]="productForm" (ngSubmit)="submit()" >
+            <mat-form-field>
+                <input matInput placeholder="Titlu" formControlName="titlu" />
+                <mat-error *ngIf="titlu?.errors?.['required']">
+                    Product name is required
+                </mat-error>
+                <mat-error *ngIf="titlu?.errors?.['maxLength']">
+                    Product name is too long
+                </mat-error>
+              </mat-form-field>
+            <mat-form-field>
+              <textarea matInput placeholder="Product Description" formControlName="descriere"></textarea>
+              <mat-error *ngIf="descriere?.errors?.['required']">
+                Description is required
+              </mat-error>
+              <mat-error *ngIf="descriere?.errors?.['maxLength']">
+                Description is too long
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <!-- <input matInput placeholder="Picture URL/Link" formControlName="pic_url" /> -->
+              <input matInput placeholder="Picture URL/Link" formControlName="pic_url" />
+              <mat-error *ngIf="pic_url?.errors?.['required']">
+                Picture is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Initial price in RON" formControlName="value" />
+              <mat-error *ngIf="value?.errors?.['required']">
+                Initial price is required. You can set it to 0 if you want.
+              </mat-error>
+              <mat-error *ngIf="value?.errors?.['max']">
+                Initial price can not exceed 99999.
+              </mat-error>
+            </mat-form-field>
+    
+            
+            <button [disabled]="!productForm.valid" mat-raised-button color="primary" class="submit-button" type="submit">
+                Post Product
+            </button>
+            
+          
+          </form>
+    </div>
+    <div class="spacer"></div>
+  </mat-card-content>
+  </mat-card> 
+    
+    </section>
+    
+    <router-outlet></router-outlet>
